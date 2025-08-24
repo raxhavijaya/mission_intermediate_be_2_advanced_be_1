@@ -1,6 +1,8 @@
 const moviesSvc = require("../services/movies.service");
 
-exports.getMovies = () => moviesSvc.getAll();
+// GET all (pakai query params: genre, sortBy, search)
+exports.getMovies = (query) => moviesSvc.getAll(query);
+
 exports.getMovieById = (id) => moviesSvc.getById(id);
 exports.createMovie = (data) => moviesSvc.create(data);
 exports.replaceMovie = (id, data) => moviesSvc.replace(id, data);

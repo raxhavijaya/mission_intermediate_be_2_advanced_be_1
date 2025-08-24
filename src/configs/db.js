@@ -9,6 +9,7 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME || "movie_db",
   waitForConnections: true,
   connectionLimit: 10,
+  decimalNumbers: true,
 });
 
 module.exports = pool;

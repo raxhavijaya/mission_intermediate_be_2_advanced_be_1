@@ -1,4 +1,5 @@
-const { query } = require("../configs/db");
+const pool = require("../configs/db");
+const query = (...args) => pool.query(...args);
 
 const ALLOWED_SORT = new Set([
   "id",
@@ -77,7 +78,7 @@ async function updateById(id, data) {
     "duration_min",
   ];
   const fields = Object.keys(data).filter((k) => allowed.includes(k));
-  if (fields.length === 0) return null; // biar service yang putuskan error
+  if (fields.length === 0) return null; 
 
   const setSql = fields.map((f) => `${f} = ?`).join(", ");
   const params = fields.map((f) => data[f]);
